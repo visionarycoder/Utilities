@@ -1,2 +1,2 @@
 # Misc
-Place for random utilities, scripts, and helpers.
+Utilities, scripts, and helpers.
