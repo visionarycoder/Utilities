@@ -18,7 +18,7 @@ net start MSSQLSERVER
 ```
 
 ## Manage LocalDB
-Warning: this will delete all your databases located in MSSQLLocalDB. Proceed with caution.
+*Warning: this will delete all your databases located in MSSQLLocalDB. Proceed with caution.*
 
 ```
 sqllocaldb stop mssqllocaldb
