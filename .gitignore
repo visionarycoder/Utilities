@@ -10,3 +10,7 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+/.vs/vc.Misc/copilot-chat/94e36095/sessions
+/.vs/vc.Misc/CopilotIndices/17.12.31.40377
+/.vs/vc.Misc/FileContentIndex
+/.vs
