@@ -2,10 +2,9 @@
 setlocal enabledelayedexpansion
 
 :: Define the list of folders
-set "folders[0]=C:\Temp\"
-set "folders[1]=C:\Windows\Temp\"
-set "folders[2]=C:\Windows\WinSxS\Temp"
-set "folders[3]=C:\Users\%USERNAME%\AppData\Local\Temp\"
+set "folders[0]=C:\Temp"
+set "folders[1]=C:\Windows\Temp"
+set "folders[2]=C:\Users\%USERNAME%\AppData\Local\Temp"
 
 :: Loop through each folder
 set /a i=0
@@ -30,8 +29,9 @@ if defined folders[%i%] (
 )
 
 :: Clean up Visual Studio ComponentModelCache
-set "rootFolder=C:\Users\%USERNAME%\AppData\Local\Microsoft\VisualStudio"
-for /d %%G in ("%rootFolder%\*") do (
+set "visualStudioFolder=C:\Users\%USERNAME%\AppData\Local\Microsoft\VisualStudio"
+echo %visualStudioFolder
+for /d %%G in ("%visualStudioFolder%\[0-9][0-9]*") do (
     if exist "%%G\ComponentModelCache" (
         echo Deleting contents of %%G\ComponentModelCache
         del /q "%%G\ComponentModelCache\*" 2>nul
@@ -40,6 +40,5 @@ for /d %%G in ("%rootFolder%\*") do (
         )
     )
 )
-
 endlocal
 pause
