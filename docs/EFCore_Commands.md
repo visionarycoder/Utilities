@@ -1,9 +1,9 @@
 ﻿In the Package Manager Console.  Run the following to rebuild the models from the Blink database:
 
 Scaffold-DbContext 
-	"Server=<<Server Address>>;Initial Catalog=<<Database Name>>;User ID=<<UID>>;Password=<<PWD>>;" 
+	"Server=&lt;Server Address&gt;;Initial Catalog=&lt;Database Name&gt;;User ID=&lt;UID&gt;;Password=&lt;PWD&gt;;" 
 	Microsoft.EntityFrameworkCore.SqlServer 
 	-Force 
-	-OutputDir <<path/to/models/>> 
-	-Tables <<Limit To Listed Tables>>
+	-OutputDir &lt;path/to/models/&gt; 
+	-Tables &lt;Limit To Listed Tables&gt;
 
