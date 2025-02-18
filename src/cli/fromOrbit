@@ -1,0 +1,31 @@
+@echo off
+echo "I say we take off and nuke the entire site from orbit. It’s the only way to be sure." Ellen Ripley
+::---------------------------------
+:: WARNING PROMPT
+::---------------------------------
+echo This script will delete all files, one by one, in %CD%, deletes the empty subfolders. 
+set /p "CONFIRM=Are you sure? [y/N] "
+
+:: Compare input (case-insensitive) to "y"
+if /I not "%CONFIRM%"=="y" (
+    echo Operation cancelled.
+    exit /b 0
+)
+
+::---------------------------------
+:: DELETE ALL FILES INDIVIDUALLY
+::---------------------------------
+echo Deleting files in %CD%...
+for /r "%CD%" %%F in (*) do (
+    del "%%~F"
+)
+
+::---------------------------------
+:: DELETE EMPTY FOLDERS (BOTTOM UP)
+::---------------------------------
+echo Deleting empty folders...
+for /f "usebackq delims=" %%D in (`dir "%CD%" /ad /s /b ^| sort /r`) do (
+    rd "%%~D" 2>nul
+)
+
+echo Done.
