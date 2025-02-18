@@ -1,10 +1,16 @@
 @echo off
-echo "I say we take off and nuke the entire site from orbit. It’s the only way to be sure." Ellen Ripley
+
+echo PROGRAM: %~nx0
+echo.
+echo "I say we take off and nuke the entire site from orbit. It’s the only way to be sure."
+echo    - Ellen Ripley
+echo.
+
 ::---------------------------------
 :: WARNING PROMPT
 ::---------------------------------
-echo This script will delete all files, one by one, in %CD%, deletes the empty subfolders. 
-set /p "CONFIRM=Are you sure? [y/N] "
+echo This script will delete all files in %CD% and then remove subfolders.
+set /p CONFIRM=Are you sure you want to proceed? [y/N]:
 
 :: Compare input (case-insensitive) to "y"
 if /I not "%CONFIRM%"=="y" (
@@ -13,19 +19,25 @@ if /I not "%CONFIRM%"=="y" (
 )
 
 ::---------------------------------
-:: DELETE ALL FILES INDIVIDUALLY
+:: REMOVE ATTRIBUTES AND DELETE ALL FILES
 ::---------------------------------
-echo Deleting files in %CD%...
+echo Deleting all files in %CD% (including hidden/readonly)...
 for /r "%CD%" %%F in (*) do (
-    del "%%~F"
+    :: Remove read-only, hidden, and system attributes
+    attrib -r -h -s "%%~F" 2>nul
+    :: Force delete quietly
+    del /f /q "%%~F" 2>nul
 )
 
 ::---------------------------------
-:: DELETE EMPTY FOLDERS (BOTTOM UP)
+:: REMOVE EMPTY FOLDERS (BOTTOM-UP)
+:: Also remove attributes from folders in case they're hidden/system
 ::---------------------------------
-echo Deleting empty folders...
+echo Deleting folders...
 for /f "usebackq delims=" %%D in (`dir "%CD%" /ad /s /b ^| sort /r`) do (
+    attrib -r -h -s "%%~D" 2>nul
     rd "%%~D" 2>nul
 )
 
-echo Done.
+echo __END__
+echo.
