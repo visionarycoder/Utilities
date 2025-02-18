@@ -75,10 +75,10 @@ echo Finished.
 echo.
 
 :: Delete bin and obj folders
-echo Deleting bin and obj folders in C:\Dev..."
-call :ProcessFolders binAndObj no
-echo Finished.
-echo.
+::echo Deleting bin and obj folders in C:\Dev..."
+::call :ProcessFolders binAndObj no
+::echo Finished.
+::echo.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::
