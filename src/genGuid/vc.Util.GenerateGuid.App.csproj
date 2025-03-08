@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>vc.Util.GenerateGuid.App</RootNamespace>
+        <ApplicationIcon>csharp.ico</ApplicationIcon>
+        <NuGetAuditMode>all</NuGetAuditMode>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="TextCopy" Version="6.2.1" />
+    </ItemGroup>
+
+</Project>
